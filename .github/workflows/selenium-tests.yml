@@ -5,27 +5,25 @@ push:
 branches:
 - main
 
-pull_request:
-branches:
-- main
-
 jobs:
 selenium-tests:
 runs-on: ubuntu-latest
 
 ```
 steps:
-  - name: Checkout Project
+  - name: Checkout repository
     uses: actions/checkout@v4
 
-  - name: Set Up Python
+  - name: Set up Python
     uses: actions/setup-python@v5
     with:
-      python-version: "3.12"
+      python-version: '3.12'
 
-  - name: Install Dependencies
-    run: pip install -r requirements.txt
+  - name: Install dependencies
+    run: |
+      pip install -r requirements.txt
 
-  - name: Run Selenium Tests
-    run: pytest -v
+  - name: Run tests
+    run: |
+      pytest -v
 ```
