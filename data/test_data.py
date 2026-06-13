@@ -3,7 +3,25 @@ VALID_USER = {
     "password": "secret_sauce"
 }
 
-INVALID_USER = {
-    "username": "wrong_user",
-    "password": "wrong_pass"
-}
+LOGIN_TEST_DATA = [
+    {
+        "username": "standard_user",
+        "password": "secret_sauce",
+        "expected": True
+    },
+    {
+        "username": "locked_out_user",
+        "password": "secret_sauce",
+        "expected": False
+    },
+    {
+        "username": "invalid_user",
+        "password": "wrong_password",
+        "expected": False
+    },
+    {
+        "username": "",
+        "password": "",
+        "expected": False
+    }
+]
