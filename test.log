@@ -17,3 +17,7 @@
 2026-06-01 01:19:54,333 - INFO - Entering credentials
 2026-06-01 01:19:54,612 - INFO - Verifying login
 2026-06-01 01:19:54,626 - INFO - Test passed
+2026-07-12 01:35:29,761 - INFO - Testing standard_user
+2026-07-12 01:35:33,034 - INFO - Testing locked_out_user
+2026-07-12 01:35:36,336 - INFO - Testing invalid_user
+2026-07-12 01:35:39,659 - INFO - Testing 

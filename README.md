@@ -1,127 +1,202 @@
-# Selenium E-Commerce Automation Framework
+# 🛒 Selenium E-Commerce Automation Framework
 
-## Overview
+![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python)
+![Selenium](https://img.shields.io/badge/Selenium-Automation-green?logo=selenium)
+![PyTest](https://img.shields.io/badge/PyTest-Testing-orange?logo=pytest)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-success?logo=githubactions)
+![Allure](https://img.shields.io/badge/Report-Allure-red)
 
-This project is a Selenium automation framework built using Python and PyTest for testing core e-commerce workflows on the SauceDemo website.
+---
 
-The framework follows the Page Object Model design pattern to improve maintainability, readability, and scalability of automated test scripts.
+# 📌 Project Overview
 
-## Features
+This project is a Selenium-based UI Automation Framework developed using **Python** and **PyTest** following industry best practices.
 
-* Automated login testing
-* Add to cart functionality testing
-* Page Object Model structure
-* PyTest framework integration
-* Explicit waits for stable execution
-* HTML test reporting
-* Logging support
-* Screenshot capture on test failure
-* Reusable browser setup using fixtures
+The framework automates end-to-end test scenarios for the **SauceDemo** e-commerce website while demonstrating a scalable automation framework using the **Page Object Model (POM)** design pattern.
 
-## Tech Stack
+It also integrates **Allure Reports**, **GitHub Actions CI/CD**, automatic **failure screenshots**, logging, and **data-driven testing** to simulate an enterprise-level automation framework.
 
-* Python
-* Selenium WebDriver
-* PyTest
-* PyTest HTML Reports
-* Git
-* GitHub
+---
 
-## Project Structure
+# 🚀 Technologies Used
 
-```text
-selenium-ecommerce-project/
+- Python
+- Selenium WebDriver
+- PyTest
+- Allure Reports
+- GitHub Actions
+- Page Object Model (POM)
+- Git
+- GitHub
+
+---
+
+# 📁 Project Structure
+
+```
+selenium-ecommerce-project
 │
-├── data/
+├── .github
+│   └── workflows
+│       └── selenium-tests.yml
+│
+├── data
 │   └── test_data.py
 │
-├── pages/
-│   ├── base_page.py
-│   ├── login_page.py
-│   ├── inventory_page.py
-│   └── cart_page.py
+├── pages
+│   ├── cart_page.py
+│   └── login_page.py
 │
-├── tests/
+├── tests
 │   ├── conftest.py
-│   ├── test_login.py
-│   └── test_cart.py
+│   ├── test_cart.py
+│   └── test_login.py
 │
-├── utils/
+├── utils
 │   ├── driver_setup.py
 │   └── logger.py
 │
-├── report.html
+├── images
+│   ├── allure-dashboard.png
+│   ├── github-actions.png
+│   └── folder-structure.png
+│
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
-## Test Scenarios
+### Folder Structure Screenshot
 
-### Login Test
+![Project Structure](images/folder-structure.png)
 
-* Opens SauceDemo website
-* Enters valid credentials
-* Verifies successful login
+---
 
-### Cart Test
+# ✅ Framework Features
 
-* Logs into application
-* Adds product to cart
-* Navigates to cart page
-* Verifies item exists in cart
+- ✅ Selenium WebDriver Automation
+- ✅ PyTest Framework
+- ✅ Page Object Model (POM)
+- ✅ Data-Driven Testing
+- ✅ Logging
+- ✅ Screenshot Capture on Failure
+- ✅ Allure Reporting
+- ✅ GitHub Actions Continuous Integration
+- ✅ Automated Test Execution
 
-## Installation
+---
 
-Clone the repository:
+# 🧪 Automated Test Scenarios
 
-```bash
-git clone https://github.com/YOUR_USERNAME/selenium-ecommerce-automation.git
+Current automated test coverage includes:
+
+- Successful Login
+- Locked Out User Login
+- Invalid Login
+- Empty Username / Password
+- Add Product to Cart
+
+---
+
+# 🏗 Framework Architecture
+
+```
+                GitHub Actions
+                       │
+                       ▼
+                 Execute PyTest
+                       │
+                       ▼
+             Selenium WebDriver
+                       │
+                       ▼
+             SauceDemo Web Application
+                       │
+          ┌────────────┴────────────┐
+          ▼                         ▼
+   Allure Reports           Screenshot on Failure
 ```
 
-Navigate to the project folder:
+---
 
-```bash
-cd selenium-ecommerce-project
-```
+# ▶️ Running the Project
 
-Install dependencies:
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running Tests
-
-Run all tests:
+## Run All Tests
 
 ```bash
-pytest -v
+pytest
 ```
 
-Run tests with HTML report:
+## Generate Allure Results
 
 ```bash
-pytest --html=report.html --self-contained-html
+pytest --alluredir=allure-results
 ```
 
-## Reporting
+## Open Allure Report
 
-The framework generates an HTML execution report after test execution.
-
-Example report file:
-
-```text
-report.html
+```bash
+allure serve allure-results
 ```
 
-## Future Improvements
+---
 
-* CI/CD integration using GitHub Actions
-* Parallel test execution
-* Cross-browser testing
-* API automation integration
-* Docker support
+# 📊 Allure Reporting
 
-## Author
+The framework integrates **Allure Reports** to provide:
 
-Created by Aireen Kate as part of a QA Automation portfolio project.
+- Detailed execution summary
+- Pass / Fail statistics
+- Execution timeline
+- Automatic failure screenshots
+- Test logs
+
+### Sample Allure Report
+
+![Allure Report](images/allure-dashboard.png)
+
+---
+
+# ⚙️ Continuous Integration (CI/CD)
+
+GitHub Actions automatically executes the test suite every time code is pushed to the repository.
+
+This ensures that every change is validated through automated testing before future development continues.
+
+### GitHub Actions Workflow
+
+![GitHub Actions](images/github-actions.png)
+
+---
+
+# 📈 Future Enhancements
+
+Planned improvements include:
+
+- Excel Data-Driven Testing
+- Parallel Test Execution (pytest-xdist)
+- API Automation Framework
+- Docker Integration
+- Jenkins CI/CD Pipeline
+- Playwright Automation Framework
+- Cross-browser Testing
+
+---
+
+# 👨‍💻 Author
+
+**Aki Del Rosario**
+
+Automation framework created as part of my QA Automation portfolio to demonstrate modern test automation practices including Selenium, PyTest, Allure Reporting, and CI/CD with GitHub Actions.
+
+---
+
+# ⭐ If you found this project useful
+
+Feel free to ⭐ star this repository!
