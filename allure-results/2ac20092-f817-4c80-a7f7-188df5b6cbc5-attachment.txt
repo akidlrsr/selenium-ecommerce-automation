@@ -1,4 +1,0 @@
-[32mINFO    [0m test_logger:test_login.py:7 Starting login test
-[32mINFO    [0m test_logger:test_login.py:12 Entering credentials
-[32mINFO    [0m test_logger:test_login.py:15 Verifying login
-[32mINFO    [0m test_logger:test_login.py:18 Test passed

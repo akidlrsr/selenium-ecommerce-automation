@@ -1,11 +1,6 @@
+allure-results/
+screenshots/
+report.html
+test.log
 __pycache__/
 *.pyc
-
-allure-results/
-allure-report/
-
-screenshots/
-
-test.log
-
-.pytest_cache/
