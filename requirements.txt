@@ -1,5 +1,7 @@
 selenium
 pytest
 pytest-html
+allure-pytest
 webdriver-manager
-allure-pytest==2.16.0
+openpyxl
+pandas
