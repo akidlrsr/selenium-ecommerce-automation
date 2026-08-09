@@ -22,19 +22,51 @@ def test_login(driver, test_case):
 
     logger = get_logger()
 
-    logger.info(
-        f"Testing {test_case['username']}"
+    allure.dynamic.title(
+        f"Login Test - {test_case['username']}"
+    )
+
+    allure.dynamic.description(
+        "Validates login behavior using different authentication scenarios."
+    )
+
+    allure.dynamic.severity(allure.severity_level.CRITICAL)
+
+    allure.dynamic.parameter(
+        "username",
+        test_case["username"]
+    )
+
+    allure.dynamic.parameter(
+        "expected",
+        test_case["expected"]
     )
 
     login_page = LoginPage(driver)
 
-    login_page.open()
+    with allure.step("Open SauceDemo login page"):
+        logger.info("Opening login page")
+        login_page.open()
 
-    login_page.login(
-        test_case["username"],
-        test_case["password"]
-    )
+    with allure.step("Enter login credentials"):
+        logger.info(
+            f"Testing {test_case['username']}"
+        )
 
-    success = "inventory" in driver.current_url
+        login_page.login(
+            test_case["username"],
+            test_case["password"]
+        )
 
-    assert success == test_case["expected"]
+    with allure.step("Verify login result"):
+        success = "inventory" in driver.current_url
+
+        logger.info(
+            f"Expected result: {test_case['expected']}"
+        )
+
+        logger.info(
+            f"Actual login success: {success}"
+        )
+
+        assert success == test_case["expected"]
