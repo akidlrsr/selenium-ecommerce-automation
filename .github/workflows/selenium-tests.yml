@@ -21,5 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run tests
-        run: pytest -v
+      - - name: Run tests
+  env:
+    HEADLESS: "true"
+  run: pytest -v
