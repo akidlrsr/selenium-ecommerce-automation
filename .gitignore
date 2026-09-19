@@ -4,3 +4,10 @@ report.html
 test.log
 __pycache__/
 *.pyc
+# Python cache files
+__pycache__/
+*.pyc
+
+# Test artifacts
+allure-results/
+screenshots/

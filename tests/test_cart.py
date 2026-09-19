@@ -8,7 +8,7 @@ from data.test_data import VALID_USER
 
 @allure.feature("Shopping Cart")
 @allure.story("Add Product to Cart")
-@allure.severity(allure.severity_level.NORMAL)
+@allure.severity(allure.severity_level.CRITICAL)
 def test_add_to_cart(driver):
 
     login_page = LoginPage(driver)
@@ -18,7 +18,7 @@ def test_add_to_cart(driver):
     with allure.step("Open SauceDemo login page"):
         login_page.open()
 
-    with allure.step("Login with valid user"):
+    with allure.step("Login with valid credentials"):
         login_page.login(
             VALID_USER["username"],
             VALID_USER["password"]
@@ -27,7 +27,7 @@ def test_add_to_cart(driver):
     with allure.step("Add first product to cart"):
         inventory_page.add_first_item_to_cart()
 
-    with allure.step("Navigate to shopping cart"):
+    with allure.step("Open shopping cart"):
         inventory_page.go_to_cart()
 
     with allure.step("Verify product is in cart"):

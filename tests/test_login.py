@@ -22,51 +22,39 @@ def test_login(driver, test_case):
 
     logger = get_logger()
 
+    username = test_case["username"]
+    password = test_case["password"]
+    expected = test_case["expected"]
+
     allure.dynamic.title(
-        f"Login Test - {test_case['username']}"
+        f"Login Test - {username if username else 'Empty Credentials'}"
     )
 
     allure.dynamic.description(
-        "Validates login behavior using different authentication scenarios."
+        f"Verify login behavior for username: "
+        f"{username if username else 'empty'}"
     )
 
-    allure.dynamic.severity(allure.severity_level.CRITICAL)
-
-    allure.dynamic.parameter(
-        "username",
-        test_case["username"]
+    allure.dynamic.severity(
+        allure.severity_level.CRITICAL
+        if expected
+        else allure.severity_level.NORMAL
     )
 
-    allure.dynamic.parameter(
-        "expected",
-        test_case["expected"]
-    )
+    allure.dynamic.parameter("username", username)
+    allure.dynamic.parameter("expected", expected)
+
+    logger.info(f"Testing login for: {username}")
 
     login_page = LoginPage(driver)
 
     with allure.step("Open SauceDemo login page"):
-        logger.info("Opening login page")
         login_page.open()
 
     with allure.step("Enter login credentials"):
-        logger.info(
-            f"Testing {test_case['username']}"
-        )
-
-        login_page.login(
-            test_case["username"],
-            test_case["password"]
-        )
+        login_page.login(username, password)
 
     with allure.step("Verify login result"):
         success = "inventory" in driver.current_url
 
-        logger.info(
-            f"Expected result: {test_case['expected']}"
-        )
-
-        logger.info(
-            f"Actual login success: {success}"
-        )
-
-        assert success == test_case["expected"]
+        assert success == expected
