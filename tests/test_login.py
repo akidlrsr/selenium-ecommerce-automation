@@ -1,3 +1,4 @@
+
 import pytest
 import allure
 
@@ -25,6 +26,7 @@ def test_login(driver, test_case):
     username = test_case["username"]
     password = test_case["password"]
     expected = test_case["expected"]
+    expected_error = test_case["expected_error"]
 
     allure.dynamic.title(
         f"Login Test - {username if username else 'Empty Credentials'}"
@@ -55,6 +57,21 @@ def test_login(driver, test_case):
         login_page.login(username, password)
 
     with allure.step("Verify login result"):
-        success = "inventory" in driver.current_url
+        if expected:
+            assert login_page.is_login_successful(), (
+                "Expected the inventory page to be displayed after login."
+            )
+            assert not login_page.is_error_message_displayed(), (
+                "An error message appeared after a successful login."
+            )
+        else:
+            assert login_page.is_error_message_displayed(), (
+                "Expected a login error message, but none was displayed."
+            )
 
-        assert success == expected
+            actual_error = login_page.get_error_message()
+
+            assert actual_error == expected_error, (
+                f"Expected error: '{expected_error}', "
+                f"but received: '{actual_error}'"
+            )
