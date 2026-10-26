@@ -1,3 +1,4 @@
+
 import allure
 
 from pages.login_page import LoginPage
@@ -30,5 +31,11 @@ def test_add_to_cart(driver):
     with allure.step("Open shopping cart"):
         inventory_page.go_to_cart()
 
-    with allure.step("Verify product is in cart"):
-        assert cart_page.is_item_in_cart()
+    with allure.step("Verify the expected product is in cart"):
+        expected_product = "Sauce Labs Backpack"
+        actual_products = cart_page.get_item_names()
+
+        assert expected_product in actual_products, (
+            f"Expected '{expected_product}' to be in the cart, "
+            f"but found: {actual_products}"
+        )
