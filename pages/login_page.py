@@ -6,23 +6,34 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class LoginPage(BasePage):
 
+    LOGIN_URL = "https://www.saucedemo.com/"
+
+    USERNAME_FIELD = (By.ID, "user-name")
+    PASSWORD_FIELD = (By.ID, "password")
+    LOGIN_BUTTON = (By.ID, "login-button")
+
     ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-test='error']")
     INVENTORY_CONTAINER = (By.ID, "inventory_container")
 
     def open(self):
-        self.driver.get("https://www.saucedemo.com/")
+        self.driver.get(self.LOGIN_URL)
 
     def login(self, username, password):
-        self.type(By.ID, "user-name", username)
-        self.type(By.ID, "password", password)
-        self.click(By.ID, "login-button")
+        self.type(*self.USERNAME_FIELD, username)
+        self.type(*self.PASSWORD_FIELD, password)
+        self.click(*self.LOGIN_BUTTON)
 
     def get_error_message(self):
         return self.get_text(*self.ERROR_MESSAGE)
 
     def is_error_message_displayed(self):
-        elements = self.driver.find_elements(*self.ERROR_MESSAGE)
-        return any(element.is_displayed() for element in elements)
+        try:
+            self.wait.until(
+                EC.visibility_of_element_located(self.ERROR_MESSAGE)
+            )
+            return True
+        except Exception:
+            return False
 
     def is_login_successful(self):
         return self.wait.until(
